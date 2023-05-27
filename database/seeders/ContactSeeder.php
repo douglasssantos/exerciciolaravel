@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Contact;
+use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 
 class ContactSeeder extends Seeder
@@ -13,6 +15,6 @@ class ContactSeeder extends Seeder
      */
     public function run()
     {
-        //
+
     }
 }
