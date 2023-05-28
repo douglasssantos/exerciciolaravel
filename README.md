@@ -12,5 +12,6 @@
 Ferramentas e Tecnologias Utilizada no Teste:
 
 1: Backend Laravel + Inertia + Breeze UI
+
 2: Frontend VueJS 3 + InertiaJS + Axios + TailwindCSS
 
