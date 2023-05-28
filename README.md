@@ -2,7 +2,7 @@
 
 ## Desafio AlfaSoft
 
-Ferramentas e Tecnologias Utilizada no Teste:
+Ferramentas e tecnologias utilizadas:
 
 1: Backend Laravel + Inertia + Breeze UI
 
