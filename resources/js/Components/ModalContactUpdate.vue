@@ -123,6 +123,7 @@ function update() {
   axios.put(route('contact.update', props.data?.id), data).then(
       response => {
         if(response.data.status){
+          errors.value = {};
           emit("event", response.data);
         }
       }
