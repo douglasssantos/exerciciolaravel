@@ -13,17 +13,29 @@ class ContactService
     public function get(Request $request)
     {
         $search = null;
-        if(!empty($request->search))
-            $search = Contact::whereRaw('lower(?) like (?)', [$request->type, "%{$request->search}%"])->get();
+        if(!empty($request->search)){
+
+            if($request->type === "contact"){
+                $search = Contact::where($request->type, 'like', '%'. strtolower($request->search).'%')->get();
+            }else {
+                $search = Contact::whereRaw("lower(" . $request->type . ") like '%" . strtolower($request->search) . "%'")->get();
+            }
+        }
 
         return ($search ?? Contact::get());
     }
     public function trashed(Request $request)
     {
         $search = null;
-        if(!empty($request->search))
-            $search = Contact::onlyTrashed()->whereRaw('lower(?) like (?)', [$request->type, "%{$request->search}%"])->get();
-
+        if(!empty($request->search)) {
+            if($request->type === "contact"){
+                $search = Contact::onlyTrashed()
+                    ->where($request->type, 'like', '%'. strtolower($request->search).'%')->get();
+            }else {
+                $search = Contact::onlyTrashed()
+                    ->whereRaw("lower(" . $request->type . ") like '%" . strtolower($request->search) . "%'")->get();
+            }
+        }
         return ($search ?? Contact::onlyTrashed()->get());
     }
     public function restore($id)
