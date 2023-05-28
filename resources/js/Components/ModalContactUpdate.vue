@@ -92,6 +92,7 @@ const open = computed(() => props.show);
 
 const emit = defineEmits(['close', 'event']);
 function fnClose(){
+  errors.value = {};
   emit('close', false);
 }
 const errors = ref({});
