@@ -14,7 +14,7 @@ class ContactService
     {
         $search = null;
         if(!empty($request->search))
-            $search = Contact::where($request->type, "ilike", "%{$request->search}%")->get();
+            $search = Contact::whereRaw('lower(?) like (?)', [$request->type, "%{$request->search}%"])->get();
 
         return ($search ?? Contact::get());
     }
@@ -22,7 +22,7 @@ class ContactService
     {
         $search = null;
         if(!empty($request->search))
-            $search = Contact::onlyTrashed()->where($request->type, "ilike", "%{$request->search}%")->get();
+            $search = Contact::onlyTrashed()->whereRaw('lower(?) like (?)', [$request->type, "%{$request->search}%"])->get();
 
         return ($search ?? Contact::onlyTrashed()->get());
     }
