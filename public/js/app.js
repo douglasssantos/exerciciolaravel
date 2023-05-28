@@ -23238,10 +23238,10 @@ var _hoisted_8 = ["href"];
 var _hoisted_9 = ["href"];
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
   "class": "text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
-}, "Lista Contatos", -1 /* HOISTED */);
+}, "Lista Contatos Deletados", -1 /* HOISTED */);
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "mt-2 text-lg leading-8 text-gray-600"
-}, "abaixo contem a sua lista de contatos.", -1 /* HOISTED */);
+}, "abaixo contem a sua lista de contatos que foram deletados.", -1 /* HOISTED */);
 var _hoisted_12 = {
   "class": "flex items-center my-10"
 };

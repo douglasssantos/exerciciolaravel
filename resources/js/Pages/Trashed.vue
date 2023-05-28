@@ -36,8 +36,8 @@
       <toast v-if="state.toast.show" :show="state.toast.show" @close="fnToast">
         <template v-slot:body>{{state.toast.text}}</template>
       </toast>
-      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Lista Contatos</h2>
-      <p class="mt-2 text-lg leading-8 text-gray-600">abaixo contem a sua lista de contatos.</p>
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Lista Contatos Deletados</h2>
+      <p class="mt-2 text-lg leading-8 text-gray-600">abaixo contem a sua lista de contatos que foram deletados.</p>
 
       <form class="flex items-center my-10">
 
