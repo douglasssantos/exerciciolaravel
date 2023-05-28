@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ContactRequest;
+use App\Http\Requests\ContactStoreRequest;
+use App\Http\Requests\ContactUpdateRequest;
 use App\Models\Contact;
 use App\Services\ContactService;
 use Illuminate\Http\Request;
@@ -51,7 +52,7 @@ class ContactController extends Controller
     {
         return $this->contactService->trashed($request);
     }
-    public function store(ContactRequest $request)
+    public function store(ContactStoreRequest $request)
     {
         return $this->contactService->store($request);
     }
@@ -61,7 +62,7 @@ class ContactController extends Controller
         return $this->contactService->get($request);
     }
 
-    public function update(ContactRequest $request,  $id)
+    public function update(ContactUpdateRequest $request, $id)
     {
         return $this->contactService->update($request, $id);
     }

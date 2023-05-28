@@ -2,7 +2,8 @@
 
 namespace App\Services;
 
-use App\Http\Requests\ContactRequest;
+use App\Http\Requests\ContactStoreRequest;
+use App\Http\Requests\ContactUpdateRequest;
 use App\Models\Contact;
 use Faker\Factory;
 use Illuminate\Http\Request;
@@ -53,7 +54,7 @@ class ContactService
         }
     }
 
-    public function store(ContactRequest $request)
+    public function store(ContactStoreRequest $request)
     {
         try{
 
@@ -79,7 +80,7 @@ class ContactService
 
     }
 
-    public function update(ContactRequest $request, $id)
+    public function update(ContactUpdateRequest $request, $id)
     {
         try{
             $contact = Contact::whereId($id);

@@ -95,9 +95,15 @@
         <template v-else>
           <li class="flex flex-col text-center border-t border-b py-5">Nenhum contato até o momento!</li>
         </template>
-        <modal-contact-create-and-update
-            :show="state.modalUpdateOrCreate.show"
-            :data="state.modalUpdateOrCreate.data"
+        <modal-contact-create
+            :show="state.modalCreate.show"
+            :data="state.modalCreate.data"
+            @close="fnCloseUpdateOrCreate"
+            @event="fnEventUpdateOrCreate"
+        />
+        <modal-contact-update
+            :show="state.modalUpdate.show"
+            :data="state.modalUpdate.data"
             @close="fnCloseUpdateOrCreate"
             @event="fnEventUpdateOrCreate"
         />
@@ -115,7 +121,8 @@ import {PencilSquareIcon, TrashIcon, UserPlusIcon, ArrowRightOnRectangleIcon, Ar
 import Toast from "@/Components/Toast.vue";
 import {computed, onBeforeMount, onMounted, reactive} from "vue";
 import ModalContactDetail from "@/Components/ModalContactDetail.vue";
-import ModalContactCreateAndUpdate from "@/Components/ModalContactCreateAndUpdate.vue";
+import ModalContactCreate from "@/Components/ModalContactCreate.vue";
+import ModalContactUpdate from "@/Components/ModalContactUpdate.vue";
 const props = defineProps(['contacts', 'user', 'isLogged']);
 
 const state = reactive({
@@ -124,7 +131,11 @@ const state = reactive({
     value:null,
     type:"name"
   },
-  modalUpdateOrCreate:{
+  modalCreate:{
+    show:false,
+    data:{}
+  },
+  modalUpdate:{
     show:false,
     data:{}
   },
@@ -169,23 +180,25 @@ function fnCloseDetail(data) {
 }
 function fnEventUpdateOrCreate(data) {
   computedData.value = data.data;
-  state.modalUpdateOrCreate.show = false;
+  state.modalCreate.show = false;
+  state.modalUpdate.show = false;
   state.toast.text = data.message;
   state.toast.show = true;
 }
 
 function fnCloseUpdateOrCreate() {
-  state.modalUpdateOrCreate.show = false;
+  state.modalCreate.show = false;
+  state.modalUpdate.show = false;
 }
 
 function fnCreate() {
-  state.modalUpdateOrCreate.data = null;
-  state.modalUpdateOrCreate.show = true;
+  state.modalCreate.data = null;
+  state.modalCreate.show = true;
 }
 
 function fnUpdate(data) {
-  state.modalUpdateOrCreate.data = data;
-  state.modalUpdateOrCreate.show = true;
+  state.modalUpdate.data = data;
+  state.modalUpdate.show = true;
 }
 
 function fnDelete(id) {
